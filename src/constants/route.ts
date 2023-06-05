@@ -3,5 +3,6 @@ export const ROUTE = {
   SIGN_IN: "/signin",
   SIGN_OUT: "/api/auth/signout",
   SIGN_UP_SUCCESS: "/signup-success",
-  FORGOT_PASSWORD: "/forgot-password"
+  FORGOT_PASSWORD: "/forgot-password",
+  ADMIN_INDEX: "/",
 };

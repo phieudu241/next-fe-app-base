@@ -2,7 +2,7 @@
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "antd";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -19,10 +19,10 @@ type FormData = {
   confirmedPassword: string;
 };
 
-export default function ResetPassword() {
+export default function ResetPassword({ params }) {
   const [errMsg, setErrMsg] = useState<string>();
   const router = useRouter();
-  const { token } = router.query;
+  const token = params.token;
 
   const {
     register,

@@ -1,10 +1,8 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 
 import { ROUTE } from "constants/route";
-import LogoIcon from "statics/images/logo.svg";
 import { SESSION_STATUS } from "constants/common";
 
 import styles from "./header.module.scss";
@@ -22,28 +20,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="text-gray-600 body-font">
-      <div className="container flex justify-between flex-wrap items-center p-5 mx-auto md:flex-row">
-        <Link passHref href="/" className="flex items-center mb-4 font-medium text-gray-900 title-font md:mb-0">
-          <Image
-            src={LogoIcon}
-            alt="Logo"
-            width={40}
-          />
-          <span className="ml-3 text-xl">Wasabi Admin</span>
-        </Link>
-
-        {!session && (
-          <div>
-            <Link href="/signup">
-              Sign Up
-            </Link>
-
-            <Link href="/signin" className="ml-3">
-              Sign In
-            </Link>
-          </div>
-        )}
-
+      <div className="container flex flex-wrap items-center justify-end p-5 mx-auto md:flex-row">
         {session && (
           <div
             className="inline-flex items-center px-3 py-1 mt-4 text-base bg-gray-100 border-0 rounded focus:outline-none hover:bg-gray-200 md:mt-0">

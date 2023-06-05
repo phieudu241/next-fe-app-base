@@ -4,7 +4,7 @@ import { NextAuthProvider, ReduxProvider } from "app/providers";
 import "styles/globals.scss";
 
 export const metadata = {
-  title: "Next App Starter",
+  title: "Wasabi",
 
   icons: {
     icon: "/favicon.ico"
