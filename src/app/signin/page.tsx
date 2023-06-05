@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
-import { Button } from "@mui/material";
+import { Button } from "antd";
 import Link from "next/link";
 
 import Layout from "components/Common/Layout";
@@ -106,9 +106,9 @@ export default function Page() {
               </div>
               {/*Submit*/}
               <Button
-                type="submit"
-                variant="contained"
-                className="px-6 py-2 text-lg text-white bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600"
+                htmlType="submit"
+                type="primary"
+                className="bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600"
               >
                 Sign in
               </Button>

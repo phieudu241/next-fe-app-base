@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from "@mui/material";
+import { Button } from "antd";
 
 import { counterSlice, selectCounter } from "stores/reducers/counter";
 
@@ -15,7 +15,7 @@ function Counter() {
   return (
     <div className="flex mb-8">
       <Button
-        type="button"
+        htmlType="button"
         onClick={increase}
         className="flex items-center p-10 bg-gray-100 border-gray-500 rounded-lg shadow-xs dark:bg-gray-800"
       >

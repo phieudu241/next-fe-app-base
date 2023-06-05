@@ -2,7 +2,7 @@
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { Button } from "@mui/material";
+import { Button } from "antd";
 
 import Layout from "components/Common/Layout";
 import { contactSchema } from "libs/validation/schemas";
@@ -77,9 +77,9 @@ export default function Page() {
               </div>
               {/*Submit*/}
               <Button
-                type="submit"
-                variant="contained"
-                className="px-6 py-2 text-lg text-white bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600"
+                htmlType="submit"
+                type="primary"
+                className="bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600"
               >
                 Submit
               </Button>
