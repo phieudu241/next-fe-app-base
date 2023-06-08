@@ -1,14 +1,11 @@
-import axios from "axios";
-
-import { IResponse } from "models/Response";
+import API from "services/client/api";
 
 const APIs = {
   ERROR_REPORT: "/api/error/report",
 };
 
 export const reportError = async (error: Partial<Error>) => {
-  const { data }: { data: IResponse } = await axios.post(APIs.ERROR_REPORT, {
+  return API.post(APIs.ERROR_REPORT, {
     error
   });
-  return data.data;
 };

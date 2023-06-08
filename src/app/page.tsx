@@ -3,11 +3,11 @@
 import { useSession } from "next-auth/react";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Role } from "@prisma/client";
 
 import AdminLayout from "components/Common/Layout/AdminLayout";
 import { withAuthentication } from "libs/hoc/withAuthentication";
 import { ROUTE } from "constants/route";
+import { ROLE } from "constants/common";
 
 function Admin() {
   const { data: session } = useSession();
@@ -27,4 +27,4 @@ function Admin() {
   </AdminLayout>;
 }
 
-export default withAuthentication(Admin, [Role.Admin]);
+export default withAuthentication(Admin, [ROLE.ADMIN, ROLE.USER]);

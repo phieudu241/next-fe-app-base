@@ -3,3 +3,8 @@ export const SESSION_STATUS = {
   AUTHENTICATED: "authenticated",
   UNAUTHENTICATED: "unauthenticated",
 };
+
+export const ROLE = {
+  ADMIN: "Admin",
+  USER: "User"
+};

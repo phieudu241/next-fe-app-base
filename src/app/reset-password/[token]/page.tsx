@@ -10,9 +10,7 @@ import Error from "components/Common/Error";
 import Layout from "components/Common/Layout";
 import { ROUTE } from "constants/route";
 import { resetPasswordSchema } from "libs/validation/schemas";
-import {
-  resetPassword,
-} from "services/client/user.service";
+import { resetPassword } from "services/client/auth.service";
 
 type FormData = {
   password: string;
@@ -38,7 +36,7 @@ export default function ResetPassword({ params }) {
       await resetPassword({ token, ...values });
       router.push(ROUTE.SIGN_IN);
     } catch (err) {
-      const message = err.response?.data?.error || err.message;
+      const message = err.response?.data?.message || err.message;
       setErrMsg(message);
     }
   };

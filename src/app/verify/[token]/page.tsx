@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 
 import Error from "components/Common/Error";
 import Layout from "components/Common/Layout";
-import { verifyToken } from "services/client/user.service";
+import { verifyToken } from "services/client/auth.service";
+import { MESSAGES } from "constants/messages";
 
 export default function VerifyToken({ params }) {
   const [errMsg, setErrMsg] = useState<string>();
@@ -21,10 +22,10 @@ export default function VerifyToken({ params }) {
   const processVerifyToken = async (token: string) => {
     setErrMsg("");
     try {
-      const result = await verifyToken(token);
-      setVerificationResult(result);
+      await verifyToken(token);
+      setVerificationResult(MESSAGES.ACCOUNT_VERIFIED);
     } catch (err) {
-      const message = err.response?.data?.error || err.message;
+      const message = err.response?.data?.message || err.message;
       setErrMsg(message);
     }
   };

@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import Error from "components/Common/Error";
 import Layout from "components/Common/Layout";
 import { forgotPasswordSchema } from "libs/validation/schemas";
-import { forgotPassword } from "services/client/user.service";
+import { forgotPassword } from "services/client/auth.service";
 
 type FormData = {
   email: string;
@@ -33,7 +33,7 @@ export default function Page() {
       await forgotPassword(values);
       setSuccess(true);
     } catch (err) {
-      const message = err.response?.data?.error || err.message;
+      const message = err.response?.data?.message || err.message;
       setErrMsg(message);
     }
   };

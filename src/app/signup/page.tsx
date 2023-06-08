@@ -7,10 +7,10 @@ import { useRouter } from "next/navigation";
 import { Button } from "antd";
 
 import Layout from "components/Common/Layout";
-import { signup } from "services/client/user.service";
 import Error from "components/Common/Error";
 import { signupSchema } from "libs/validation/schemas";
 import { ROUTE } from "constants/route";
+import { signup } from "services/client/auth.service";
 
 type FormData = {
   name: string;
@@ -36,7 +36,7 @@ export default function Page() {
       await signup(data);
       router.push(ROUTE.SIGN_UP_SUCCESS);
     } catch (err) {
-      const message = err.response?.data?.error || err.message;
+      const message = err.response?.data?.message || err.message;
       setErrMsg(message);
     }
   };
