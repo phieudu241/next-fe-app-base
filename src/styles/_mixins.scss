@@ -1,10 +1,10 @@
-@import "variables";
-@import "functions";
+@use "variables";
+@use "functions";
 
 // Media of at most the maximum breakpoint width. No query for the largest breakpoint.
 // Makes the @content apply to the given breakpoint and narrower.
-@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
-  $max: breakpoint-max($name, $breakpoints);
+@mixin media-breakpoint-down($name, $breakpoints: variables.$grid-breakpoints) {
+  $max: functions.breakpoint-max($name, $breakpoints);
   @if $max {
     @media (max-width: $max) {
       @content;
@@ -16,8 +16,8 @@
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
 // Makes the @content apply to the given breakpoint and wider.
-@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
-  $min: breakpoint-min($name, $breakpoints);
+@mixin media-breakpoint-up($name, $breakpoints: variables.$grid-breakpoints) {
+  $min: functions.breakpoint-min($name, $breakpoints);
   @if $min {
     @media (min-width: $min) {
       @content;
@@ -27,9 +27,9 @@
   }
 }
 
-@mixin media-breakpoint-in-range($name, $breakpoints: $grid-breakpoints) {
-  $min: breakpoint-min($name, $breakpoints);
-  $max: breakpoint-min(breakpoint-next($name, $breakpoints), $breakpoints);
+@mixin media-breakpoint-in-range($name, $breakpoints: variables.$grid-breakpoints) {
+  $min: functions.breakpoint-min($name, $breakpoints);
+  $max: functions.breakpoint-min(functions.breakpoint-next($name, $breakpoints), $breakpoints);
   @if $min and $max {
     @media (min-width: $min) and (max-width: $max) {
       @content;
@@ -48,22 +48,22 @@
 }
 
 @mixin media-device-mobile() {
-  @media (min-width: 300px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: $orientation-portrait) {
+  @media (min-width: 300px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: variables.$orientation-portrait) {
     @content;
   }
 }
 
 @mixin media-device-tablet() {
-  @media (min-width: 481px) and (max-width: 812px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: $orientation-landscape) {
+  @media (min-width: 481px) and (max-width: 812px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: variables.$orientation-landscape) {
     @content;
   }
-  @media (min-width: 601px) and (max-width: 1200px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: $orientation-portrait) {
+  @media (min-width: 601px) and (max-width: 1200px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: variables.$orientation-portrait) {
     @content;
   }
 }
 
 @mixin media-device-desktop() {
-  @media (min-width: 1024px) and (max-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: $orientation-landscape) {
+  @media (min-width: 1024px) and (max-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: variables.$orientation-landscape) {
     @content;
   }
   @media (min-width: 1200px) and (-webkit-min-device-pixel-ratio: 1) {
@@ -72,7 +72,7 @@
 }
 
 @mixin media-device-extra-desktop() {
-  @media (min-width: 1601px) and (orientation: $orientation-landscape) {
+  @media (min-width: 1601px) and (orientation: variables.$orientation-landscape) {
     @content;
   }
 }
@@ -85,5 +85,5 @@
 
 @mixin fontSize($size) {
   font-size: $size; // Fallback in px
-  font-size: calculateRem($size);
+  font-size: functions.calculateRem($size);
 }

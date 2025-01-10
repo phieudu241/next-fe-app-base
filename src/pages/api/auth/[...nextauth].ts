@@ -37,8 +37,8 @@ const DEFAULT_NEXT_AUTH_OPTIONS: NextAuthOptions = {
           };
 
           return authUser;
-        } catch (e) {
-          throw new Error(e.response.data.message);
+        } catch (err) {
+          throw new Error(err.response?.data?.message || err.message);
         }
       },
     }),

@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom/extend-expect";
 import { render } from "@testing-library/react";
 
 import Header from "components/Common/Header";
@@ -8,6 +7,6 @@ import Header from "components/Common/Header";
  */
 describe("Header component", () => {
   test("should render header", () => {
-    render(<Header links={[]}/>);
+    render(<Header/>);
   });
 });

@@ -36,13 +36,6 @@ export const resetPasswordSchema = yup.object().shape({
   password: yup.string().required("Password is required"),
   confirmedPassword: yup
     .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match"),
-});
-
-export const resetPasswordWithTokenSchema = yup.object().shape({
-  token: yup.string().required(),
-  password: yup.string().required("Password is required"),
-  confirmedPassword: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match"),
+    .required("Confirmed Password must match")
+    .oneOf([yup.ref("password")], "Passwords must match"),
 });

@@ -29,7 +29,7 @@ const Header: React.FC = () => {
             alt="Logo"
             width={40}
           />
-          <span className="ml-3 text-xl">Wasabi Admin</span>
+          <span className="ml-3 text-xl">Admin</span>
         </Link>
 
         {!session && (

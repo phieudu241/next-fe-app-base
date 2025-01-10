@@ -15,10 +15,10 @@ function Admin() {
   const router = useRouter();
 
   useEffect(() => {
-    if (user) {
+    if (user && router) {
       router.push(ROUTE.ADMIN_INDEX);
     }
-  }, [user]);
+  }, [router, user]);
 
   return <AdminLayout>
     <div className="text-center">

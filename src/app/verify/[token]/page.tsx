@@ -1,17 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 import Error from "components/Common/Error";
 import Layout from "components/Common/Layout";
 import { verifyToken } from "services/client/auth.service";
-import { MESSAGES } from "constants/messages";
 
-export default function VerifyToken({ params }) {
+export default function VerifyToken({ params }: { params: Promise<{ token: string }> }) {
   const [errMsg, setErrMsg] = useState<string>();
   const [verificationResult, setVerificationResult] = useState<string>();
 
-  const token = params.token;
+  const { token } = use(params);
 
   useEffect(() => {
     if (token) {
@@ -22,10 +21,10 @@ export default function VerifyToken({ params }) {
   const processVerifyToken = async (token: string) => {
     setErrMsg("");
     try {
-      await verifyToken(token);
-      setVerificationResult(MESSAGES.ACCOUNT_VERIFIED);
+      const result = await verifyToken(token);
+      setVerificationResult(result);
     } catch (err) {
-      const message = err.response?.data?.message || err.message;
+      const message = err.response?.data?.error || err.message;
       setErrMsg(message);
     }
   };
