@@ -1,4 +1,5 @@
 import React from "react";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 import { NextAuthProvider, ReduxProvider } from "app/providers";
 import "styles/globals.scss";
@@ -20,7 +21,11 @@ export default function RootLayout({
     <html>
       <body>
         <NextAuthProvider>
-          <ReduxProvider>{children}</ReduxProvider>
+          <ReduxProvider>
+            <AntdRegistry>
+              {children}
+            </AntdRegistry>
+          </ReduxProvider>
         </NextAuthProvider>
       </body>
     </html>
